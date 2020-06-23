@@ -14,14 +14,30 @@ private URL_PATH = 'http://localhost:3000/sanitas';
   constructor(private http: HttpClient) { }
 
 
+  // public getList(params): Observable<any> {
+  //   try {
+  //     console.log(this.URL_PATH + params);
+  //     return this.http.get(this.URL_PATH + params);
+  //   } catch (error) {
+  //     // tslint:disable-next-line: no-unused-expression
+  //     console.error(error)
+  //   }
+  // }
+
+
   public getList(params): Observable<any> {
-    try {
-      console.log(this.URL_PATH + params);
-      return this.http.get(this.URL_PATH + params);
-    } catch (error) {
-      // tslint:disable-next-line: no-unused-expression
-      console.error(error)
-    }
+    return new Observable<any>((observer) => {
+      this.http.get(this.URL_PATH + params).subscribe((status) => {
+        try {
+          if (status) {
+            observer.next(status);
+          }
+        } catch (error) {
+          observer.error();
+        }
+      });
+    });
   }
+  
   
 }

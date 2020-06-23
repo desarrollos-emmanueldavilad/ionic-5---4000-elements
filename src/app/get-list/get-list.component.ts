@@ -11,6 +11,7 @@ export class GetListComponent implements OnInit {
   private PAGE_NUMBER = 1;
   private  PAGE_LIMIT = 8;
   public searchText: string = "";
+  public searchText1 : string ="";
   constructor(protected dataBaseService: DbService) { }
 
   ngOnInit() {

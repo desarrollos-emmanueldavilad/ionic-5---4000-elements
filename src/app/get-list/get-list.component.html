@@ -1,6 +1,8 @@
 <div class="ion-text-center">
   <input   type="text" style="color: black;"  placeholder="Search by text" [(ngModel)]="searchText">
 </div>
+
+
 <ion-list>
 
     <ion-item *ngFor="let item of itemListData | filter:searchText ; let i = index ">
