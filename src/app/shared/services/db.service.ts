@@ -8,24 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class DbService {
 // API path
-private URL_PATH = 'http://localhost:3000/sanitas';
-
+public URL_PATH = 'http://localhost:3000/sanitas';
 
   constructor(private http: HttpClient) { }
 
-
-  // public getList(params): Observable<any> {
-  //   try {
-  //     console.log(this.URL_PATH + params);
-  //     return this.http.get(this.URL_PATH + params);
-  //   } catch (error) {
-  //     // tslint:disable-next-line: no-unused-expression
-  //     console.error(error)
-  //   }
-  // }
-
-
-  public getList(params): Observable<any> {
+  public getList(params ?: any): Observable<any> {
     return new Observable<any>((observer) => {
       this.http.get(this.URL_PATH + params).subscribe((status) => {
         try {
@@ -38,6 +25,9 @@ private URL_PATH = 'http://localhost:3000/sanitas';
       });
     });
   }
+
+
+
   
   
 }

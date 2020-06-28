@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { DbService } from '../shared/services/db.service';
+
+
+
 @Component({
   selector: 'app-get-list',
   templateUrl: './get-list.component.html',
   styleUrls: ['./get-list.component.scss'],
 })
+
+
+
 export class GetListComponent implements OnInit {
+
+ 
   private url: string;
   public  itemListData = [];
   private PAGE_NUMBER = 1;
   private  PAGE_LIMIT = 8;
   public searchText: string = "";
-  public searchText1 : string ="";
-  constructor(protected dataBaseService: DbService) { }
+  constructor(protected dataBaseService: DbService) { 
+    
+  }
 
   ngOnInit() {
     this.getAllData(false, '');
@@ -20,7 +29,7 @@ export class GetListComponent implements OnInit {
 
 
   
- protected getAllData(isFirstLoad, event) {
+ private getAllData(isFirstLoad, event) {
   this.url = '?_page=' + this.PAGE_NUMBER + '&_limit=' + this.PAGE_LIMIT;
   this.dataBaseService.getList(this.url)
     .subscribe((data: any) => {
